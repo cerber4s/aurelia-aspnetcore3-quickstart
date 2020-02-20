@@ -35,3 +35,9 @@ node_modules
 /dist
 /test/coverage-jest
 /test/coverage-karma
+
+# Other
+.vs
+_ReSharper.Caches
+[Bb]in
+[Oo]bj

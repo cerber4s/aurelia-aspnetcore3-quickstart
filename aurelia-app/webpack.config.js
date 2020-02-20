@@ -141,8 +141,20 @@ module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, h
     }
   },
   performance: { hints: false },
-  devServer: {
+  devServer: production ? {
     contentBase: outDir,
+    // serve index.html for all 404 (required for push-state)
+    historyApiFallback: true,
+    hot: hmr || project.platform.hmr,
+    port: port || project.platform.port,
+    host: host
+  } : {
+    contentBase: outDir,
+    proxy: {
+      context: () => true, // proxy all requests
+      target: 'https://localhost:5001', // target ASP.NET Core
+      secure: false // do not verify self-signed certificate
+    },
     // serve index.html for all 404 (required for push-state)
     historyApiFallback: true,
     hot: hmr || project.platform.hmr,

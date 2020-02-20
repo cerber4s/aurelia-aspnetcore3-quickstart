@@ -23,8 +23,9 @@
   "platform": {
     "hmr": false,
     "open": false,
-    "port": 5000,
+    "port": 8080,
     "host": "localhost",
     "output": "wwwroot/dist"
-  }
+  },
+  "packageManager": "npm"
 }
